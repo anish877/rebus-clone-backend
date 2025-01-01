@@ -9,10 +9,10 @@ app.use(cors())
 
 export async function generateBusRoutes(origin, destination) {
     const groq = new Groq({
-        apiKey: "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"
+        apiKey: "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"
     });
 
-    const prompt = `Generate a JSON array of 10 bus routes between ${origin} and ${destination}. Each route should have the following structure:
+    const prompt = `Generate a JSON array of 5 bus routes between ${origin} and ${destination}. Each route should have the following structure:
     {
         companyName: string,
         busName: string,
@@ -65,12 +65,11 @@ export async function generateBusRoutes(origin, destination) {
         throw error;
     }
 }
-
 app.get("/getRoutes",async (req,res)=>{
     const {origin,destination} = req.query
     console.log(origin,destination)
     try {
-        const routes = await generateBusRoutes(origin, destination);
+        const routes = await generateBusRoutes('Sonipat', 'Delhi');
         console.log(routes)
         res.status(200).json({routes})
     } catch (error) {
