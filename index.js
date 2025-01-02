@@ -69,7 +69,7 @@ app.get("/getRoutes",async (req,res)=>{
     const {origin,destination} = req.query
     console.log(origin,destination)
     try {
-        const routes = await generateBusRoutes('Sonipat', 'Delhi');
+        const routes = await generateBusRoutes(origin, destination);
         console.log(routes)
         res.status(200).json({routes})
     } catch (error) {
